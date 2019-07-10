@@ -6,7 +6,7 @@ $(document).ready(function () {
 // FullCalendar (should) load
     var calendarEl = document.getElementById('calendar');
 
-    console.log("running")
+    console.log("build calendar")
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
       plugins: [ 'dayGrid' ]
