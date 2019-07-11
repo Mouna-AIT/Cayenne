@@ -9,9 +9,22 @@ $(document).ready(function () {
     console.log("build calendar")
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      plugins: [ 'dayGrid' ]
+      timeZone: "local",
+      plugins: [ "dayGrid" ],
+      events: [
+        {
+          id: "a",
+          title: "Event Title",
+          start: "2019-07-14T14:00:00",
+          end: "2019-07-14T16:00:00"
+        }
+      ]
     });
 
     calendar.render();
+
+    var event = calendar.getEventById("a")
+    var start = event.start
+    console.log(start.toISOString())
 
 });
