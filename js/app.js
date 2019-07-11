@@ -10,6 +10,7 @@ $(document).ready(function () {
       timeZone: "local",
       plugins: [ "dayGrid" ],
       
+      // Event Tooltips, courtesy of Popper.js and Tooltip.js
       eventRender: function(info) {
         var tooltip = new Tooltip(info.el, {
           title: info.event.extendedProps.description,
@@ -18,6 +19,7 @@ $(document).ready(function () {
           container: "body"
         });
       },
+      // Events
       events: [
         {
           id: "a",
