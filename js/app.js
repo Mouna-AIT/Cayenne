@@ -1,17 +1,61 @@
 // Program waits until everything is loaded before executing any code
 $(document).ready(function () {
 
-    console.log("doc ready")
+// FullCalendar loads
+    var calendarEl = document.getElementById("calendar");
 
-// FullCalendar (should) load
-    var calendarEl = document.getElementById('calendar');
-
-    console.log("running")
+    console.log("build calendar")
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      plugins: [ 'dayGrid' ]
+      timeZone: "local",
+      plugins: [ "dayGrid" ],
+      
+      // Event Tooltips, courtesy of Popper.js and Tooltip.js
+      eventRender: function(info) {
+        var tooltip = new Tooltip(info.el, {
+          title: info.event.extendedProps.description,
+          placement: "top",
+          trigger: "hover",
+          container: "body"
+        });
+      },
+      // Events
+      events: [
+        {
+          id: "a",
+          title: "Event Title",
+          start: "2019-07-14T14:00:00",
+          end: "2019-07-16T16:00:00",
+          description: "a really cool event"
+        },
+        {
+          id: "b",
+          title: "Sub-event Title",
+          start: "2019-07-16T14:00:00",
+          description: "another also cool event"
+        }
+      ],
     });
 
     calendar.render();
 
+    var event = calendar.getEventById("a")
+    var start = event.start
+    var end = event.end
+    console.log(start.toISOString())
+
+    $("#event-submit").click(function(event){
+
+      event.preventDefault();
+      console.log("Onclick Event");
+
+      var evName = $("#event-name").val().trim();
+      var evStar = $("#event-start-time").val().trim();
+      var evEnds = $("#event-end-time").val().trim();
+      var evDesc = $("#event-description").val().trim();
+      console.log(evName);
+      console.log(evStar);
+      console.log(evEnds);
+      console.log(evDesc);
+    });
 });
