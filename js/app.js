@@ -44,4 +44,18 @@ $(document).ready(function () {
     var end = event.end
     console.log(start.toISOString())
 
+    $("#event-submit").click(function(event){
+
+      event.preventDefault();
+      console.log("Onclick Event");
+
+      var evName = $("#event-name").val().trim();
+      var evStar = $("#event-start-time").val().trim();
+      var evEnds = $("#event-end-time").val().trim();
+      var evDesc = $("#event-description").val().trim();
+      console.log(evName);
+      console.log(evStar);
+      console.log(evEnds);
+      console.log(evDesc);
+    });
 });
