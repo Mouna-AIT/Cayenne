@@ -25,8 +25,14 @@ $(document).ready(function () {
           id: "a",
           title: "Event Title",
           start: "2019-07-14T14:00:00",
-          end: "2019-07-14T16:00:00",
+          end: "2019-07-16T16:00:00",
           description: "a really cool event"
+        },
+        {
+          id: "b",
+          title: "Sub-event Title",
+          start: "2019-07-16T14:00:00",
+          description: "another also cool event"
         }
       ],
     });
