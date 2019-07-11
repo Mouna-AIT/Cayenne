@@ -47,7 +47,6 @@ $(document).ready(function () {
     $("#event-submit").click(function(event){
 
       event.preventDefault();
-      console.log("Onclick Event");
 
       var evName = $("#event-name").val().trim();
       var evStar = $("#event-start-time").val().trim();
@@ -57,5 +56,22 @@ $(document).ready(function () {
       console.log(evStar);
       console.log(evEnds);
       console.log(evDesc);
+
+      // var test = calendar.addEvent({
+      //   title: evName,
+      //   start: new Date(),
+      //   end: "2019-07-17",
+      //   description: "Hello World!"
+      // });
+      // console.log(test);
+      // console.log(calendar.getEvents());
+
+      var dynamicTest = calendar.addEvent({
+        title: evName,
+        start: evStar,
+        end: evEnds,
+        description: evDesc
+      });
+      console.log(dynamicTest);
     });
 });
