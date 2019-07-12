@@ -49,12 +49,16 @@ $(document).ready(function () {
       event.preventDefault();
 
       var evName = $("#event-name").val().trim();
-      var evStar = $("#event-start-time").val().trim();
-      var evEnds = $("#event-end-time").val().trim();
+      var evStarD = $("#event-start-date").val().trim();
+      var evEndsD = $("#event-end-date").val().trim();
+      var evStarT = $("#event-start-time").val().trim();
+      var evEndsT = $("#event-end-time").val().trim();
       var evDesc = $("#event-description").val().trim();
       console.log(evName);
-      console.log(evStar);
-      console.log(evEnds);
+      console.log(evStarD);
+      console.log(evEndsD);
+      console.log(evStarT);
+      console.log(evEndsT);
       console.log(evDesc);
 
       // var test = calendar.addEvent({
@@ -68,10 +72,20 @@ $(document).ready(function () {
 
       var dynamicTest = calendar.addEvent({
         title: evName,
-        start: evStar,
-        end: evEnds,
+        start: evStarD + "T" + evStarT,
+        end: evEndsD,
         description: evDesc
       });
-      console.log(dynamicTest);
+      console.log(dynamicTest.start);
+
+      console.log(evStarD + "T" + evStarT)
+
+        if (dynamicTest === null){
+          alert("Bad date format. Please enter date as follows: YYYY-MM-DD")
+        }
+        else if (dynamicTest === "undefined"){
+          alert("You undefined up!")
+        }
+        else {};
     });
 });
