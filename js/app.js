@@ -73,18 +73,21 @@ $(document).ready(function () {
       var dynamicTest = calendar.addEvent({
         title: evName,
         start: evStarD + "T" + evStarT,
-        end: evEndsD,
+        end: evEndsD + "T" + evEndsT,
         description: evDesc
       });
       console.log(dynamicTest.start);
+      console.log(dynamicTest.end);
 
       console.log(evStarD + "T" + evStarT)
 
         if (dynamicTest === null){
-          alert("Bad date format. Please enter date as follows: YYYY-MM-DD")
+          alert("Bad date/time format. Please enter date as follows: YYYY-MM-DD")
+          console.log("null")
         }
         else if (dynamicTest === "undefined"){
-          alert("You undefined up!")
+          alert("Bad date/time format. Please enter date as follows: YYYY-MM-DD")
+          console.log("undefined")
         }
         else {};
     });
