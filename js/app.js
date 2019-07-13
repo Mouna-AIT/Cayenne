@@ -83,11 +83,9 @@ $(document).ready(function () {
 
         if (dynamicTest === null){
           alert("Bad date/time format. Please enter date as follows: YYYY-MM-DD")
-          console.log("null")
         }
         else if (dynamicTest === "undefined"){
           alert("Bad date/time format. Please enter date as follows: YYYY-MM-DD")
-          console.log("undefined")
         }
         else {};
     });
