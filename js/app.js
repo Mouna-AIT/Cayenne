@@ -47,15 +47,46 @@ $(document).ready(function () {
     $("#event-submit").click(function(event){
 
       event.preventDefault();
-      console.log("Onclick Event");
 
       var evName = $("#event-name").val().trim();
-      var evStar = $("#event-start-time").val().trim();
-      var evEnds = $("#event-end-time").val().trim();
+      var evStarD = $("#event-start-date").val().trim();
+      var evEndsD = $("#event-end-date").val().trim();
+      var evStarT = $("#event-start-time").val().trim();
+      var evEndsT = $("#event-end-time").val().trim();
       var evDesc = $("#event-description").val().trim();
       console.log(evName);
-      console.log(evStar);
-      console.log(evEnds);
+      console.log(evStarD);
+      console.log(evEndsD);
+      console.log(evStarT);
+      console.log(evEndsT);
       console.log(evDesc);
+
+      // var test = calendar.addEvent({
+      //   title: evName,
+      //   start: new Date(),
+      //   end: "2019-07-17",
+      //   description: "Hello World!"
+      // });
+      // console.log(test);
+      // console.log(calendar.getEvents());
+
+      var dynamicTest = calendar.addEvent({
+        title: evName,
+        start: evStarD + "T" + evStarT,
+        end: evEndsD + "T" + evEndsT,
+        description: evDesc
+      });
+      console.log(dynamicTest.start);
+      console.log(dynamicTest.end);
+
+      console.log(evStarD + "T" + evStarT)
+
+        if (dynamicTest === null){
+          alert("Bad date/time format. Please enter date as follows: YYYY-MM-DD")
+        }
+        else if (dynamicTest === "undefined"){
+          alert("Bad date/time format. Please enter date as follows: YYYY-MM-DD")
+        }
+        else {};
     });
 });
