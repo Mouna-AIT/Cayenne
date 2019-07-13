@@ -99,3 +99,22 @@ outline:none;
 background: linear-gradient(#ffdd7f 5%, #FFC107 100%);
 }
 
+#btnLogout {
+
+    font-size: 16px;
+background: linear-gradient(#FFC107 5%, #ffdd7f 100%);
+border: 1px solid #e5a900;
+color: #1e0db6;;
+font-weight: bold;
+cursor: pointer;
+width: 100%;
+border-radius: 5px;
+padding: 10px 0;
+outline:none;
+
+}
+.hide {
+
+    visibility: visible;
+    visibility: hidden;
+}
