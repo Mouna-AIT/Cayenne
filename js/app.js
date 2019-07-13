@@ -1,6 +1,14 @@
 // Program waits until everything is loaded before executing any code
 $(document).ready(function () {
 
+  // function buildQueryURL() {
+
+  // var queryURL = "https://walgreens.p.rapidapi.com/products/list";
+  
+  // var 
+
+  // };
+
 // FullCalendar loads
     var calendarEl = document.getElementById("calendar");
 
@@ -44,49 +52,42 @@ $(document).ready(function () {
     var end = event.end
     console.log(start.toISOString())
 
-    $("#event-submit").click(function(event){
+      $("#event-submit").click(function(event){
 
-      event.preventDefault();
+        event.preventDefault();
 
-      var evName = $("#event-name").val().trim();
-      var evStarD = $("#event-start-date").val().trim();
-      var evEndsD = $("#event-end-date").val().trim();
-      var evStarT = $("#event-start-time").val().trim();
-      var evEndsT = $("#event-end-time").val().trim();
-      var evDesc = $("#event-description").val().trim();
-      console.log(evName);
-      console.log(evStarD);
-      console.log(evEndsD);
-      console.log(evStarT);
-      console.log(evEndsT);
-      console.log(evDesc);
+        var evName = $("#event-name").val().trim();
+        var evStarD = $("#event-start-date").val().trim();
+        var evEndsD = $("#event-end-date").val().trim();
+        var evStarT = $("#event-start-time").val().trim();
+        var evEndsT = $("#event-end-time").val().trim();
+        var evDesc = $("#event-description").val().trim();
+        console.log(evName);
+        console.log(evStarD);
+        console.log(evEndsD);
+        console.log(evStarT);
+        console.log(evEndsT);
+        console.log(evDesc);
 
-      // var test = calendar.addEvent({
-      //   title: evName,
-      //   start: new Date(),
-      //   end: "2019-07-17",
-      //   description: "Hello World!"
-      // });
-      // console.log(test);
-      // console.log(calendar.getEvents());
+        var dynamicTest = calendar.addEvent({
+          title: evName,
+          start: evStarT ? evStarD + "T" + evStarT : evStarD,
+          end: evEndsT ? evEndsD + "T" + evEndsT : evEndsD,
+          description: evDesc
+        });
 
-      var dynamicTest = calendar.addEvent({
-        title: evName,
-        start: evStarD + "T" + evStarT,
-        end: evEndsD + "T" + evEndsT,
-        description: evDesc
+        console.log(dynamicTest);
+        console.log(dynamicTest.start);
+        console.log(dynamicTest.end);
+
+        console.log(evStarD + evStarT)
+
+          if (dynamicTest === null){
+            alert("Bad date/time format (NULL). Please enter date as follows: YYYY-MM-DD.")
+          }
+          else if (dynamicTest === undefined){
+            alert("Bad date/time format (UNDEFINED). Please enter date as YYYY-MM-DD.")
+          }
+          else {};
       });
-      console.log(dynamicTest.start);
-      console.log(dynamicTest.end);
-
-      console.log(evStarD + "T" + evStarT)
-
-        if (dynamicTest === null){
-          alert("Bad date/time format. Please enter date as follows: YYYY-MM-DD")
-        }
-        else if (dynamicTest === "undefined"){
-          alert("Bad date/time format. Please enter date as follows: YYYY-MM-DD")
-        }
-        else {};
-    });
 });
