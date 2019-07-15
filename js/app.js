@@ -1,14 +1,6 @@
 // Program waits until everything is loaded before executing any code
 $(document).ready(function () {
 
-  // function buildQueryURL() {
-
-  // var queryURL = "https://walgreens.p.rapidapi.com/products/list";
-  
-  // var 
-
-  // };
-
 // FullCalendar loads
     var calendarEl = document.getElementById("calendar");
 
@@ -24,7 +16,7 @@ $(document).ready(function () {
           title: info.event.extendedProps.description,
           placement: "top",
           trigger: "hover",
-          container: "body"
+          container: "body",
         });
       },
       // Events
