@@ -36,6 +36,7 @@ $(document).ready(function () {
             description: "another also cool event"
           }
         ],
+        eventColor: "#3f0e40"
     });
 
     calendar.render();
@@ -78,11 +79,11 @@ $(document).ready(function () {
         console.log(dynamicTest.start);
         console.log(evStarD + evStarT)
 
-          if (dynamicTest === null){
-            alert("Bad date/time format (NULL). Please enter date as follows: YYYY-MM-DD.")
+          if (dynamicTest.start === null){
+            alert("Bad date format: (NULL). Please enter date as follows: YYYY-MM-DD.")
           }
-          else if (dynamicTest === undefined){
-            alert("Bad date/time format (UNDEFINED). Please enter date as YYYY-MM-DD.")
+          else if (dynamicTest.start === undefined){
+            alert("Bad date format: (UNDEFINED). Please enter date as YYYY-MM-DD.")
           }
           else {};
       });
