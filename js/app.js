@@ -9,32 +9,33 @@ $(document).ready(function () {
     var calendar = new FullCalendar.Calendar(calendarEl, {
       timeZone: "local",
       plugins: [ "dayGrid" ],
+      displayEventEnd: true,
       
-      // Event Tooltips, courtesy of Popper.js and Tooltip.js
-      eventRender: function(info) {
-        var tooltip = new Tooltip(info.el, {
-          title: info.event.extendedProps.description,
-          placement: "top",
-          trigger: "hover",
-          container: "body",
-        });
-      },
-      // Events
-      events: [
-        {
-          id: "a",
-          title: "Event Title",
-          start: "2019-07-14T14:00:00",
-          end: "2019-07-16T16:00:00",
-          description: "a really cool event"
+        // Event Tooltips, courtesy of Popper.js and Tooltip.js
+        eventRender: function(info) {
+          var tooltip = new Tooltip(info.el, {
+            title: info.event.extendedProps.description,
+            placement: "top",
+            trigger: "hover",
+            container: "body",
+          });
         },
-        {
-          id: "b",
-          title: "Sub-event Title",
-          start: "2019-07-16T14:00:00",
-          description: "another also cool event"
-        }
-      ],
+        // Events
+        events: [
+          {
+            id: "a",
+            title: "Event Title",
+            start: "2019-07-14T14:00:00",
+            end: "2019-07-16T16:00:00",
+            description: "a really cool event"
+          },
+          {
+            id: "b",
+            title: "Sub-event Title",
+            start: "2019-07-16T14:00:00",
+            description: "another also cool event"
+          }
+        ],
     });
 
     calendar.render();
@@ -61,6 +62,11 @@ $(document).ready(function () {
         console.log(evEndsT);
         console.log(evDesc);
 
+        if (evEndsD === ""){
+          evEndsD = evStarD;
+        }
+        else {};
+
         var dynamicTest = calendar.addEvent({
           title: evName,
           start: evStarT ? evStarD + "T" + evStarT : evStarD,
@@ -70,8 +76,6 @@ $(document).ready(function () {
 
         console.log(dynamicTest);
         console.log(dynamicTest.start);
-        console.log(dynamicTest.end);
-
         console.log(evStarD + evStarT)
 
           if (dynamicTest === null){
