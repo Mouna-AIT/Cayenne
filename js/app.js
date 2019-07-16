@@ -1,12 +1,13 @@
 // Program waits until everything is loaded before executing any code
-$(document).ready(function () {
+$(document).ready(function() {
 
-// FullCalendar loads
+    // FullCalendar loads
     var calendarEl = document.getElementById("calendar");
 
     console.log("build calendar")
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
+
       timeZone: "local",
       plugins: [ "dayGrid" ],
       displayEventEnd: true,
@@ -42,18 +43,18 @@ $(document).ready(function () {
     calendar.render();
 
     var firebaseConfig = {
-      apiKey: "AIzaSyCSlUrEzG6UyqNwOY1rT4gac5D_LXfRq34",
-      authDomain: "gift-app-3a099.firebaseapp.com",
-      databaseURL: "https://gift-app-3a099.firebaseio.com",
-      projectId: "gift-app-3a099",
-      storageBucket: "",
-      messagingSenderId: "549853130134",
-      appId: "1:549853130134:web:22ccb0856801f2a2"
+        apiKey: "AIzaSyCSlUrEzG6UyqNwOY1rT4gac5D_LXfRq34",
+        authDomain: "gift-app-3a099.firebaseapp.com",
+        databaseURL: "https://gift-app-3a099.firebaseio.com",
+        projectId: "gift-app-3a099",
+        storageBucket: "",
+        messagingSenderId: "549853130134",
+        appId: "1:549853130134:web:22ccb0856801f2a2"
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.auth().onAuthStateChanged(function(user) {
-      console.log(user.email);
+        console.log(user.email);
     })
 
     var event = calendar.getEventById("a")
@@ -63,6 +64,7 @@ $(document).ready(function () {
 
       // Event Submission
       $("#event-submit").click(function(event){
+
 
         event.preventDefault();
 
