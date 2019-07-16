@@ -1,57 +1,56 @@
 // Program waits until everything is loaded before executing any code
-$(document).ready(function () {
+$(document).ready(function() {
 
-// FullCalendar loads
+    // FullCalendar loads
     var calendarEl = document.getElementById("calendar");
 
     console.log("build calendar")
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      timeZone: "local",
-      plugins: [ "dayGrid" ],
-      
-      // Event Tooltips, courtesy of Popper.js and Tooltip.js
-      eventRender: function(info) {
-        var tooltip = new Tooltip(info.el, {
-          title: info.event.extendedProps.description,
-          placement: "top",
-          trigger: "hover",
-          container: "body"
-        });
-      },
-      // Events
-      events: [
-        {
-          id: "a",
-          title: "Event Title",
-          start: "2019-07-14T14:00:00",
-          end: "2019-07-16T16:00:00",
-          description: "a really cool event"
+        timeZone: "local",
+        plugins: ["dayGrid"],
+
+        // Event Tooltips, courtesy of Popper.js and Tooltip.js
+        eventRender: function(info) {
+            var tooltip = new Tooltip(info.el, {
+                title: info.event.extendedProps.description,
+                placement: "top",
+                trigger: "hover",
+                container: "body"
+            });
         },
-        {
-          id: "b",
-          title: "Sub-event Title",
-          start: "2019-07-16T14:00:00",
-          description: "another also cool event"
-        }
-      ],
+        // Events
+        events: [{
+                id: "a",
+                title: "Event Title",
+                start: "2019-07-14T14:00:00",
+                end: "2019-07-16T16:00:00",
+                description: "a really cool event"
+            },
+            {
+                id: "b",
+                title: "Sub-event Title",
+                start: "2019-07-16T14:00:00",
+                description: "another also cool event"
+            }
+        ],
     });
 
     calendar.render();
 
     var firebaseConfig = {
-      apiKey: "AIzaSyCSlUrEzG6UyqNwOY1rT4gac5D_LXfRq34",
-      authDomain: "gift-app-3a099.firebaseapp.com",
-      databaseURL: "https://gift-app-3a099.firebaseio.com",
-      projectId: "gift-app-3a099",
-      storageBucket: "",
-      messagingSenderId: "549853130134",
-      appId: "1:549853130134:web:22ccb0856801f2a2"
+        apiKey: "AIzaSyCSlUrEzG6UyqNwOY1rT4gac5D_LXfRq34",
+        authDomain: "gift-app-3a099.firebaseapp.com",
+        databaseURL: "https://gift-app-3a099.firebaseio.com",
+        projectId: "gift-app-3a099",
+        storageBucket: "",
+        messagingSenderId: "549853130134",
+        appId: "1:549853130134:web:22ccb0856801f2a2"
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.auth().onAuthStateChanged(function(user) {
-      console.log(user.email);
+        console.log(user.email);
     })
 
     var event = calendar.getEventById("a")
@@ -59,49 +58,47 @@ $(document).ready(function () {
     var end = event.end
     console.log(start.toISOString())
 
-    $("#event-submit").click(function(event){
+    $("#event-submit").click(function(event) {
 
-      event.preventDefault();
+        event.preventDefault();
 
-      var evName = $("#event-name").val().trim();
-      var evStarD = $("#event-start-date").val().trim();
-      var evEndsD = $("#event-end-date").val().trim();
-      var evStarT = $("#event-start-time").val().trim();
-      var evEndsT = $("#event-end-time").val().trim();
-      var evDesc = $("#event-description").val().trim();
-      console.log(evName);
-      console.log(evStarD);
-      console.log(evEndsD);
-      console.log(evStarT);
-      console.log(evEndsT);
-      console.log(evDesc);
+        var evName = $("#event-name").val().trim();
+        var evStarD = $("#event-start-date").val().trim();
+        var evEndsD = $("#event-end-date").val().trim();
+        var evStarT = $("#event-start-time").val().trim();
+        var evEndsT = $("#event-end-time").val().trim();
+        var evDesc = $("#event-description").val().trim();
+        console.log(evName);
+        console.log(evStarD);
+        console.log(evEndsD);
+        console.log(evStarT);
+        console.log(evEndsT);
+        console.log(evDesc);
 
-      // var test = calendar.addEvent({
-      //   title: evName,
-      //   start: new Date(),
-      //   end: "2019-07-17",
-      //   description: "Hello World!"
-      // });
-      // console.log(test);
-      // console.log(calendar.getEvents());
+        // var test = calendar.addEvent({
+        //   title: evName,
+        //   start: new Date(),
+        //   end: "2019-07-17",
+        //   description: "Hello World!"
+        // });
+        // console.log(test);
+        // console.log(calendar.getEvents());
 
-      var dynamicTest = calendar.addEvent({
-        title: evName,
-        start: evStarD + "T" + evStarT,
-        end: evEndsD + "T" + evEndsT,
-        description: evDesc
-      });
-      console.log(dynamicTest.start);
-      console.log(dynamicTest.end);
+        var dynamicTest = calendar.addEvent({
+            title: evName,
+            start: evStarD + "T" + evStarT,
+            end: evEndsD + "T" + evEndsT,
+            description: evDesc
+        });
+        console.log(dynamicTest.start);
+        console.log(dynamicTest.end);
 
-      console.log(evStarD + "T" + evStarT)
+        console.log(evStarD + "T" + evStarT)
 
-        if (dynamicTest === null){
-          alert("Bad date/time format. Please enter date as follows: YYYY-MM-DD")
-        }
-        else if (dynamicTest === "undefined"){
-          alert("Bad date/time format. Please enter date as follows: YYYY-MM-DD")
-        }
-        else {};
+        if (dynamicTest === null) {
+            alert("Bad date/time format. Please enter date as follows: YYYY-MM-DD")
+        } else if (dynamicTest === "undefined") {
+            alert("Bad date/time format. Please enter date as follows: YYYY-MM-DD")
+        } else {};
     });
 });
