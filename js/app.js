@@ -30,7 +30,7 @@ $(document).ready(function () {
             description: "a really cool event"
           },
           {
-            id: "b",
+            id: "test",
             title: "Sub-event Title",
             start: "2019-07-16T14:00:00",
             description: "another also cool event"
@@ -46,6 +46,7 @@ $(document).ready(function () {
     var end = event.end
     console.log(start.toISOString())
 
+      // Event Submission
       $("#event-submit").click(function(event){
 
         event.preventDefault();
@@ -69,6 +70,7 @@ $(document).ready(function () {
         else {};
 
         var dynamicTest = calendar.addEvent({
+          id: "test",
           title: evName,
           start: evStarT ? evStarD + "T" + evStarT : evStarD,
           end: evEndsT ? evEndsD + "T" + evEndsT : evEndsD,
@@ -77,14 +79,35 @@ $(document).ready(function () {
 
         console.log(dynamicTest);
         console.log(dynamicTest.start);
-        console.log(evStarD + evStarT)
-
-          if (dynamicTest.start === null){
-            alert("Bad date format: (NULL). Please enter date as follows: YYYY-MM-DD.")
-          }
-          else if (dynamicTest.start === undefined){
+        console.log(evStarD + evStarT);
+        
+          // Form handling (not functioning as intended)
+           if (dynamicTest.start === null){
+             alert("Bad date format: (NULL). Please enter date as follows: YYYY-MM-DD.")
+           }
+           else if (dynamicTest.start === undefined){
             alert("Bad date format: (UNDEFINED). Please enter date as YYYY-MM-DD.")
-          }
-          else {};
+           }
+           else {};
+
+      });
+
+      $(".fc-event-container").click(function(event){
+        console.log("working");
+        var TargetEV = calendar.getEventById("test");
+        var delPro = prompt("Would you like to delete this event?(y or n)");
+        console.log(TargetEV);
+        console.log(event);
+        if (delPro === "y"){
+          alert("So shall it be")
+          TargetEV.remove();
+        }
+        else if (delPro === "n"){
+          alert("It shall remain")
+        }
+        else {
+          alert("FOLLOW MY INSTRUCTIONS")
+        }
+        console.log(calendar.GetEvents);
       });
 });
