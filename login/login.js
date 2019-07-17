@@ -42,7 +42,7 @@ btnLogin.addEventListener('click', e => {
 
             if (email == "test@test.com" && pass == "test123") {
                 alert("Welcome To SMART GIFT");
-                window.location.href = "../index.html";
+                window.location.href = "calendar.html";
                 return false
             } else {
 
